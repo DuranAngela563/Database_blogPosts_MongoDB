@@ -1,0 +1,365 @@
+DATABASE PROJECT 2
+
+Ángela María Durán Pinto	100472766
+
+
+
+
+EXERCISE 1
+
+
+1 Schema description.
+
+Each document in the blogs collection has the following form:
+
+{
+	"author": {
+		"name":"Ángela" ,
+		"username":"angela563",
+		"twitter": "angela_34",
+		"address":"Málaga,Spain",
+		"phone_number": [666987532,688595237]
+	},
+	"title":"Learning" ,
+	"body": "path",
+	"date": ISODate("2019-05-02"),
+	"tags": ["Data Science","school"],
+	"comments": [
+		{
+			"username": "francho",
+			"content": "I found this blog extraordinary and amazing inspiring",
+			"date_time": ISODate("2020-06-08T16:15:08Z")
+		}
+	]
+}
+
+
+The "author" field holds the author of the blog, which is an embedded document composed by the fields:
+	"name" field holds author name,
+	"username" field holds author username,
+	"twitter" field holds author Twitter account,
+	"address" field holds author unique address,
+	"phone_number" field holds author contact phone numbers. A blog can have more than one phone number.
+The "title" field holds the title of the blog.
+The "body" field holds the body of the blog.
+The "date" field holds the publication date of the blog.
+The "tags" field holds the associated tags to the blog.
+The "comment" field holds the different comments of the blog; A blog can have more than one comment. It is an embedded document composed by the fields:
+	"username" field holds the username of the person which makes the comment.
+	"content" field holds the content of the comment.
+	"date_time" field hold the date and time the comment was made.
+
+
+
+
+
+2 Insert statements.
+
+
+use ex1_db;
+db.blogs.insertMany(
+[
+{
+	"author": {
+		"name":"Ángela" ,
+		"username":"angela563",
+		"twitter": "angela_34",
+		"address":"Málaga,Spain",
+		"phone_number": [666987532,688595237]
+	},
+	"title":"Learning" ,
+	"body": "path",
+	"date": ISODate("2019-05-02"),
+	"tags": ["Data Science","school"],
+	"comments": [
+		{
+			"username": "francho",
+			"content": "I found this blog extraordinary and amazing inspiring",
+			"date_time": ISODate("2020-06-08T16:15:08Z")
+		}
+	]
+}
+,
+
+
+{
+	"author": {
+		"name":"Luna" ,
+		"username":"lunita83", 
+		"twitter": "luna_56",
+		"address": "Cáceres,Spain",
+		"phone_number": [997653445,958647254,978456123]
+	},
+	"title":"Night" ,
+	"body": "bed",
+	"date": ISODate("2020-08-05"),
+	"tags": ["food","sleep"],
+	"comments": [
+		{
+			"username":"angela563",
+			"content":"It is nice because you learn useful things",
+			"date_time": ISODate("2021-07-16T20:30:30Z"),
+		}
+	]
+}
+,
+
+
+
+
+{
+	"author": {
+		"name": "María" ,
+		"username":"Mery123",
+		"twitter":"maria_35" ,
+		"address": "Sevilla,Spain",
+		"phone_number": [668959087,998762123]
+	},
+	"title": "Children",
+	"body": "Teach to your children",
+	"date": ISODate("2019-05-18"),
+	"tags": ["mongoDB","Branding"],
+	"comments": [
+		{
+			"username":"francho",
+			"content":"I found it amazing and extraordinary",
+			"date_time": ISODate("2020-11-13T11:05:45Z")
+		}
+	]
+}
+,
+
+
+
+
+{
+	"author": {
+		"name": "María" ,
+		"username":"Mery123",
+		"twitter":"maria_35" ,
+		"address": "Sevilla,Spain",
+		"phone_number": [668959087,998762123]
+	},
+	"title": "Everybody",
+	"body": "tecnology",
+	"date": ISODate("2020-05-18"),
+	"tags": ["Branding"],
+	"comments": [
+		{
+			"username":"francho",
+			"content":"In my opinion it was not really nice",
+			"date_time": ISODate("2020-10-03T10:14:45Z")
+		}
+	]
+}
+,
+
+
+
+{
+	"author": {
+		"name": "María" ,
+		"username":"Mery123",
+		"twitter":"maria_35" ,
+		"address": "Sevilla,Spain",
+		"phone_number": [668959087,998762123]
+	},
+	"title":"Science" ,
+	"body": "The word of today",
+	"date": ISODate("2019-05-05"),
+	"tags": ["database","programming"],
+	"comments": [
+		{
+			"username":"lunita83",
+			"content":"It was amazing and extraordinary for my learning way",
+			"date_time": ISODate("2020-08-16T18:14:04Z")
+		}
+	]
+}
+,
+
+
+{
+	"author": {
+		
+		"name": "Fran",
+		"username": "francho",
+		"twitter": "fran_jmt",
+		"address": "Miranda, Venezuela",
+		"phone_number": [999999999, 123456789]
+	},
+	"title": "First",
+	"body": "Hi!!!",
+	"date": ISODate("2020-11-23"),
+	"tags": ["Blog","New"],
+	"comments": [
+		{
+			"username": "angela563",
+			"content": "Oleee",
+			"date_time": ISODate("2020-11-23T12:00:00Z")
+		},
+		{
+			"username": "melaguerra",
+			"content": "Pura vida",
+			"date_time": ISODate("2020-11-23T04:20:00Z")
+		}
+	]
+},
+
+
+{
+	"author": {
+		
+		"name": "Fran",
+		"username": "francho",
+		"twitter": "fran_jmt",
+		"address": "Miranda, Venezuela",
+		"phone_number": [999999999, 123456789]
+	},
+	"title": "Data Scientist",
+	"body": "I'm applying for jobs in Big Data",
+	"date": ISODate("2022-09-13"),
+	"tags": ["Data Science", "Job Search"],
+	"comments": [
+		{
+			"username": "marquetes4",
+			"content": "Good luck!",
+			"date_time": ISODate("2022-09-13T11:30:00Z")
+		}
+	]
+},
+
+
+
+
+{
+	"author": {
+		"name": "Melania",
+		"username": "melaguerra",
+		"twitter": "melaguerra83",
+		"address": "San José, Costa Rica",
+		"phone_number": [400500600]
+	},
+	"title": "Bored",
+	"body": "Im trying DIYs out of boredom :P",
+	"date": ISODate("2019-05-07"),
+	"tags": ["DIY","Experimenting"],
+	"comments": [
+		{
+			"username": "angela563",
+			"content": "Cool!",
+			"date_time": ISODate("2019-06-01T05:00:00Z")
+		}
+	]
+},
+
+
+{
+	"author": {
+		"name": "Melania",
+		"username": "melaguerra",
+		"twitter": "melaguerra83",
+		"address": "San José, Costa Rica",
+		"phone_number": [400500600]
+	},
+	"title": "College",
+	"body": "Lately I have been my marketing class at college",
+	"date": ISODate("2021-03-19"),
+	"tags": ["Online Marketing", "Branding", "Uni", "Learning"],
+	"comments": [
+		{
+			"username": "Mery123",
+			"content": "That is amazing. I find young people liking my profession extraordinary!",
+			"date_time": ISODate("2021-03-19T14:43:00Z")
+		},
+		{
+			"username": "francho",
+			"content": "Last class was lit!",
+			"date_time": ISODate("2021-03-21T18:19:41Z")
+		}
+	]
+}
+
+
+
+]
+);
+
+
+
+
+
+3 Queries statements
+
+
+
+db.blogs.createIndex( {"comments.content": "text"} );
+db.blogs.find ( { $text: { $search: "\"amazing\" \"extraordinary\"" },
+		      $expr: { $lt: [ "$comments.date_time" , "$date" ] } },
+				{ "author.name": 1, "author.twitter": 1, "title": 1, "date": 1 })
+			  .sort( {"date": 1} );
+			  
+
+
+
+db.blogs.find ( { "tags":  { $in: [ "Video Marketing", "Online Marketing", "Data Science", "Branding"] }} )
+			  .sort( {"date": 1} );
+			  
+
+
+
+db.blogs.find ( { "tags":  { $nin: [ "Video Marketing", "Online Marketing", "Data Science", "Branding"] }} )
+			  .sort( {"date": 1} );
+			  
+
+
+			  
+db.blogs.find ( { "date":  { $gte: ISODate("2019-05-01T00:00:00Z"),
+								   $lte: ISODate("2019-05-31T23:59:59Z")}},
+				{ "title": 1 } );
+
+
+
+
+db.blogs.find ( { "author.username": "Mery123",
+				  "tags":  { $in: [ "nosql", "database", "mongoDB"] },
+				  "date":  { $gte: ISODate("2019-01-01T00:00:00Z"),$lte: ISODate("2019-12-31T23:59:59Z")} },
+				{ "title": 1 } );
+
+
+
+
+
+EXERCISE 2
+
+
+1 Import code.
+
+!!!! falta
+
+2 Queries statements.
+
+
+
+db.zipcode.find({}, {"pop": 1}).limit(1).sort({"pop": 1});
+
+
+
+db.zipcode.count({"city":"SPRINGFIELD" });
+
+
+
+db.zipcode.count({"state":"GA", "pop":{$lte:1500} });  
+
+
+
+db.zipcode.updateMany({"state": "MA"},{$set:{"area":"27 340 km"} });
+
+
+
+db.zipcode.find({ "loc.0": { $gte: -81.000001, $lte: 32.915592 }, "loc.1": { $gte: -81.000001, $lte: 32.915592 } }, { "city": 1 });
+
+
+
+db.zipcode.updateMany({"pop":{$gte:45000, $lt:50000}}, {$set:{"pop": 50000}});
+
